@@ -1,0 +1,6 @@
+UI_EN = {
+    UI_grab_category = "Взять все (категория)",
+    UI_drop_category = "Переложить все (категория)",
+    UI_transfer_compulsively = "Выложить необходимое",
+    UI_loot_compulsively = "Взять необходимое"
+};

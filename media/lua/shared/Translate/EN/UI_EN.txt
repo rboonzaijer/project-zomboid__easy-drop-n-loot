@@ -1,0 +1,6 @@
+UI_EN = {
+    UI_grab_category = "Grab all (category)",
+    UI_drop_category = "Drop all (category)",
+    UI_transfer_compulsively = "Transfer compulsively",
+    UI_loot_compulsively = "Loot compulsively"
+};
