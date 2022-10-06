@@ -1,6 +1,8 @@
 UI_EN = {
     UI_grab_category = "Grab all (category)",
     UI_drop_category = "Drop all (category)",
-    UI_transfer_compulsively = "Transfer compulsively",
-    UI_loot_compulsively = "Loot compulsively"
+    UI_transfer_compulsively = "Transfer Category",
+    UI_transfer_compulsively_tooltip = "Drop all items of the same category as in current loot container from the current inventory.",
+    UI_loot_compulsively = "Loot Category",
+    UI_loot_compulsively_tooltip = "Loot all items of the same category as in your current inventory from the current loot container."
 };

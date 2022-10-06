@@ -4,7 +4,9 @@ require "ISUI/ISButton"
 require "KACommon"
 
 local string_UI_transfer_compulsively = getText("UI_transfer_compulsively")
+local string_UI_transfer_compulsively_tooltip = getText("UI_transfer_compulsively_tooltip")
 local string_UI_loot_compulsively = getText("UI_loot_compulsively")
+local string_UI_loot_compulsively_tooltip = getText("UI_loot_compulsively_tooltip")
 local ISInventoryPagecreateChildren = ISInventoryPage.createChildren
 local ISInventoryPageprerender = ISInventoryPage.prerender
 
@@ -47,6 +49,7 @@ local function createTransferAllCompulsivelyButton(self)
         self.KAtransferAllCompulsively = ISButton:new(0, 0, textWid, lootButtonHeight,
             string_UI_transfer_compulsively, self, ISInventoryPage.KATransferCompulsively);
         self.KAtransferAllCompulsively:initialise();
+        self.KAtransferAllCompulsively.tooltip = string_UI_transfer_compulsively_tooltip
         self.KAtransferAllCompulsively.borderColor.a = 0.0;
         self.KAtransferAllCompulsively.backgroundColor.a = 0.0;
         self.KAtransferAllCompulsively.backgroundColorMouseOver.a = 0.7;
@@ -63,6 +66,7 @@ local function createLootAllCompulsivelyButton(self)
         self.KAlootAllCompulsively = ISButton:new(0, 0, textWid, lootButtonHeight,
             string_UI_loot_compulsively, self, ISInventoryPage.KALootCompulsively);
         self.KAlootAllCompulsively:initialise();
+        self.KAlootAllCompulsively.tooltip = string_UI_loot_compulsively_tooltip
         self.KAlootAllCompulsively.borderColor.a = 0.0;
         self.KAlootAllCompulsively.backgroundColor.a = 0.0;
         self.KAlootAllCompulsively.backgroundColorMouseOver.a = 0.7;
@@ -71,12 +75,24 @@ local function createLootAllCompulsivelyButton(self)
     end
 end
 
+local function getTransferCompusivelyButtonOffset(self)
+    local result = 0
+    if (self.transferAll:getIsVisible()) then -- transfer all button
+        result = self.transferAll:getX() - 3 - self.KAtransferAllCompulsively.width
+    end
+    if (self.swapAutoLoot ~= nil and self.swapAutoLoot:getIsVisible()) then -- AutoLoot button
+        result = self.swapAutoLoot:getX() - 3 - self.KAtransferAllCompulsively.width
+    end
+    return result
+end
+
 local function updateTransferCompulsivelyButton(self)
     if (self.onCharacter) then
         if (self.width >= 370) then
             self.transferAll:setVisible(true)
             self.KAtransferAllCompulsively:setVisible(true)
-            local offset = self.transferAll.x - 3 - self.KAtransferAllCompulsively.width
+            --local offset = self.transferAll.x - 3 - self.KAtransferAllCompulsively.width
+            local offset = getTransferCompusivelyButtonOffset(self)
             self.KAtransferAllCompulsively:setX(offset)
         else
             -- hide when Transfer All button hides
@@ -85,19 +101,27 @@ local function updateTransferCompulsivelyButton(self)
     end
 end
 
+local function getLootCompusivelyButtonOffset(self)
+    local result = 0
+    if (self.lootAll:getIsVisible()) then -- loot all button
+        result = self.lootAll:getRight() + 3
+    end
+    if (self.stackItemsButtonIcon ~= nil and self.stackItemsButtonIcon:getIsVisible()) then -- AutoLoot button
+        result = self.stackItemsButtonIcon:getRight() + 3
+    end
+    return result
+end
+
 local function updateLootCompulsivelyButton(self)
     if (not self.onCharacter) then
-        local offset = self.lootAll.x + self.lootAll.width + 3
-        if (not self.lootAll:getIsVisible()) then
-            offset = 0
-        end
+        local offset = getLootCompusivelyButtonOffset(self)
         self.KAlootAllCompulsively:setX(offset)
     end
 end
 
 local function updateOvenAndRemoveAllButton(self)
     if (not self.onCharacter) then
-        local offset = self.lootAll.x + self.lootAll.width + self.KAlootAllCompulsively.width + 6
+        local offset = self.KAlootAllCompulsively:getRight() + 3
         if (self.toggleStove:getIsVisible()) then
             self.toggleStove:setX(offset)
         end
