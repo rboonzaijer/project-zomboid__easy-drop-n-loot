@@ -2,8 +2,6 @@
 
 > Version 0.1.0
 
-> Non-Game-Changing, Utility, 41+
-
 ## Description
 
 This mod allows to transfer items of the **same category** between player's inventory and loot inventory with a single button click.
