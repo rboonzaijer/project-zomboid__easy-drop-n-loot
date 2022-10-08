@@ -1,0 +1,8 @@
+UI_EN = {
+    UI_grab_category = "捡起全部 (按种类)",
+    UI_drop_category = "丢弃全部 (按种类)",
+    UI_transfer_compulsively = "转换种类",
+    UI_transfer_compulsively_tooltip = "放入所有与容器中相同种类的物品",
+    UI_loot_compulsively = "搜括种类",
+    UI_loot_compulsively_tooltip = "搜括所有与当前物品库中相同种类的物品"
+};
