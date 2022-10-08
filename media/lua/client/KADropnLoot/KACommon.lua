@@ -1,3 +1,5 @@
+-- update 09.10.2022
+
 local arrayToTable = function(array)
     if (type(array) == "table") then
         return array
