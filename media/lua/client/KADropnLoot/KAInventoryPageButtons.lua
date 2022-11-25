@@ -101,13 +101,31 @@ local function updateTransferCompulsivelyButton(self)
     end
 end
 
+local function findSmartStackToAllButton(self)
+    if (self.children) then
+        for _, selectedItem in pairs(self.children) do
+            if (selectedItem.title == getText("UI_StackToAll")) then
+                return selectedItem
+            end
+        end
+    end
+    return nil
+end
+
 local function getLootCompusivelyButtonOffset(self)
     local result = 0
-    if (self.lootAll:getIsVisible()) then -- loot all button
+    -- Loot All button
+    if (self.lootAll:getIsVisible()) then
         result = self.lootAll:getRight() + 3
     end
-    if (self.stackItemsButtonIcon ~= nil and self.stackItemsButtonIcon:getIsVisible()) then -- AutoLoot button
+    -- AutoLoot button
+    if (self.stackItemsButtonIcon ~= nil and self.stackItemsButtonIcon:getIsVisible()) then
         result = self.stackItemsButtonIcon:getRight() + 3
+    end
+    -- Smart Stack button
+    local smartStackButton = findSmartStackToAllButton(self)
+    if (smartStackButton ~= nil) then
+        result = smartStackButton:getRight() + 3
     end
     return result
 end

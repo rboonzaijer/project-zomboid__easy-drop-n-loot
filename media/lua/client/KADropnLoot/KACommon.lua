@@ -1,4 +1,4 @@
--- update 09.10.2022
+-- update 25.11.2022
 
 local arrayToTable = function(array)
     if (type(array) == "table") then
