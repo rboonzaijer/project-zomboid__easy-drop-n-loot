@@ -139,8 +139,8 @@ end
 local function findSmartStackToAllButton(self)
     if (self.children) then
         for _, selectedItem in pairs(self.children) do
-            -- since it's not storing it's references on the ISInventoryPage
-            -- it can only be found by it's title (somewhat unreliable)
+            -- since it's not storing its references on the ISInventoryPage
+            -- it can only be found by its title (somewhat unreliable)
             if (selectedItem.title == getText("UI_StackToAll")) then
                 return selectedItem
             end
