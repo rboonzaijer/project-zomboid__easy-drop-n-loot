@@ -60,18 +60,23 @@ A: Yes
 [h1]Compatibility[/h1]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2577903374]AutoLoot[/url]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=966221273]Smart Stack[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2313387159]Better Sorting[/url]
 
 [h1]Language support[/h1]
+[list]
 [*] English
 [*] Russian
 [*] Spanish (Español) (by [url=https://steamcommunity.com/profiles/76561199401473704]{playerName(-1)}[/url])
 [*] Traditional Chinese (by [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url])
 [*] Simplified Chinese (by [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url])
+[/list]
 
 [h1]For mod developers[/h1]
-
+[list]
 [*] ISInventoryPage.EDNLLootItems - "Loot Category" inventory button
 [*] ISInventoryPage.EDNLDropItems - "Drop Category" inventory button
+[/list]
+
 
 [hr][/hr]
 

@@ -38,11 +38,14 @@ end
 --- Get InventoryItem display category
 local function getItemDisplayCategory(item)
     local category = item:getDisplayCategory() -- e.g., Literature, SkillBook, Food
+    if (category == nil or category == "") then
+        return item:getCategory() -- fallback
+    end
     local result = getText("IGUI_ItemCat_" .. category) -- get item category translation
     if (result == nil or result == "") then
         return item:getCategory() -- fallback
     end
-    return result;
+    return result    
 end
 
 --- Get categories list of selected items
