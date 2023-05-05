@@ -45,6 +45,7 @@ local function createDropItemsButton(self)
         self.EDNLDropItems.backgroundColorMouseOver.a = 0.7
         self:addChild(self.EDNLDropItems)
         self.EDNLDropItems:setVisible(true)
+        self.KAtransferAllCompulsively = self.EDNLDropItems -- old button name
     end
 end
 
@@ -64,6 +65,7 @@ local function createLootItemsButton(self)
         self.EDNLLootItems.backgroundColorMouseOver.a = 0.7
         self:addChild(self.EDNLLootItems)
         self.EDNLLootItems:setVisible(true)
+        self.KAlootAllCompulsively = self.EDNLLootItems -- old button name
     end
 end
 
@@ -103,7 +105,7 @@ end
 
 -- Update "Transfer Category" button
 local function updateDropItemsButton(self)
-    if (self.onCharacter) then
+    if (self.onCharacter and self.EDNLDropItems ~= nil) then
         if (self.width >= 370) then
             -- show "Transfer Category" when "Transfer All" button shows
             self.transferAll:setVisible(true)
@@ -169,8 +171,8 @@ local function getLootItemsButtonOffset(self)
 end
 
 -- Update "Loot Category" button
-local function updateLootItemsButton(self)
-    if (not self.onCharacter) then
+local function updateLootItemsButton(self) 
+    if (not self.onCharacter and self.EDNLLootItems ~= nil) then
         local offset = getLootItemsButtonOffset(self)
         self.EDNLLootItems:setX(offset)
 
@@ -196,7 +198,7 @@ end
 
 -- Update "Oven" and "Remove All" button
 local function updateOvenAndRemoveAllButton(self)
-    if (not self.onCharacter) then
+    if (not self.onCharacter and self.EDNLLootItems ~= nil) then
         local offset = self.EDNLLootItems:getRight() + 3
         if (self.toggleStove:getIsVisible()) then
             self.toggleStove:setX(offset)
