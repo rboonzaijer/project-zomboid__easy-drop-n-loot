@@ -1,4 +1,4 @@
-UI_EN = {
+UI_RU = {
     UI_grab_category = "Взять все (категория)",
     UI_grab_category_tooltip = "Взять категории:",
     UI_drop_category = "Переложить все (категория)",

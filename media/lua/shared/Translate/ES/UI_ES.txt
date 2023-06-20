@@ -1,10 +1,10 @@
-UI_EN = {
-    UI_grab_category = "Tomar toda la categoría",
-    UI_grab_category_tooltip = "Grab categories:",
-    UI_drop_category = "Soltar toda la categoría",
-    UI_drop_category_tooltip = "Drop categories:",
-    UI_drop_items_button = "Transferir por categoría",
-    UI_drop_items_button_tooltip = "Soltar todos los artículos de la misma categoría del inventario actual en el contenedor seleccionado",
-    UI_loot_items_button = "Categoría de botín",
-    UI_loot_items_button_tooltip = "Tomar todos los artículos de la misma categoría del contenedor seleccionado el inventario actual."
+UI_ES = {
+    UI_grab_category = "Tomar todo (categoria)",
+    UI_grab_category_tooltip = "Tomar categorias:",
+    UI_drop_category = "Soltar todo (categoria)",
+    UI_drop_category_tooltip = "Soltar categorias:",
+    UI_drop_items_button = "Transferir Categoria",
+    UI_drop_items_button_tooltip = "Suelta todo el saqueo de la misma categoria en el almacenamiento.",
+    UI_loot_items_button = "Saquear Categoria",
+    UI_loot_items_button_tooltip = "Saquea todo el contenido de la misma categoria en tu inventario."
 };

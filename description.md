@@ -61,14 +61,18 @@ A: Yes
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2577903374]AutoLoot[/url]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=966221273]Smart Stack[/url]
 [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2313387159]Better Sorting[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2946364542]Search Containers[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2695194481]SchiZ's Random Patches[/url]
+[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2799848602]SpiffUI - Inventory[/url]
 
 [h1]Language support[/h1]
 [list]
 [*] English
-[*] Russian
-[*] Spanish (Español) (by [url=https://steamcommunity.com/profiles/76561199401473704]{playerName(-1)}[/url])
-[*] Traditional Chinese (by [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url])
-[*] Simplified Chinese (by [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url])
+[*] Russian (Русский)
+[*] Traditional Chinese (繁體中文) (by [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url])
+[*] Simplified Chinese (简体中文) (by [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url])
+[*] Spanish (Español) (by [url=https://steamcommunity.com/id/Dartaroth]Dartaroth[/url])
+[*] Italian (Italiano) (by [url=https://steamcommunity.com/profiles/76561198002245033]Viper79[/url])
 [/list]
 
 [h1]For mod developers[/h1]
@@ -80,12 +84,12 @@ A: Yes
 
 [hr][/hr]
 
-
-Contributors:
+Special thanks
 [list]
-[*] [url=https://steamcommunity.com/id/usa_alex]Alex "usa" K[/url]
-[*] [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url]
-[*] [url=https://steamcommunity.com/profiles/76561199401473704]{playerName(-1)}[/url]
+[*] [url=https://steamcommunity.com/id/Gex_TengokuNetworks]꧁༒☬ GΞX ☬༒꧂[/url]
+[*] [url=https://steamcommunity.com/id/Js-2nd]Js[/url]
+[*] [url=https://steamcommunity.com/profiles/76561198077191529]Segaside[/url]
+[*] [url=https://steamcommunity.com/profiles/76561197997880978]dhert[/url]
 [/list]
 
 Source: https://github.com/SharePickle/easy-drop-n-loot

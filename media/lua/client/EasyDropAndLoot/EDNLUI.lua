@@ -69,14 +69,19 @@ local function createLootItemsButton(self)
     end
 end
 
+-- Call "ISInventoryPageCreateChildren" in case it was not called (other mods conflict)
+local function createInventoryButtons(self)    
+    createDropItemsButton(self)
+    createLootItemsButton(self)    
+end
+
 -- reference to original function
 local ISInventoryPageCreateChildren = ISInventoryPage.createChildren
 
 -- Override ISInventoryPage:createChildren to inject EDNL code
 function ISInventoryPage:createChildren()
     ISInventoryPageCreateChildren(self) -- call original function
-    pcall(createDropItemsButton, self) -- pcall to prevent UI from crashing if this mod causes problems
-    pcall(createLootItemsButton, self)
+    pcall(createInventoryButtons, self) -- pcall to prevent UI from crashing if this mod causes problems
 end
 
 -- "Drop Category" button click handler
@@ -218,6 +223,7 @@ function ISInventoryPage:prerender()
     pcall(updateDropItemsButton, self) -- pcall to prevent UI from crashing if this mod causes problems
     pcall(updateLootItemsButton, self)
     pcall(updateOvenAndRemoveAllButton, self)
+    pcall(createInventoryButtons, self) -- in case other mods override ISInventoryPage.createChildren - lets try to create buttons
 end
 
 --- CONTEXT MENU OPTIONS ---

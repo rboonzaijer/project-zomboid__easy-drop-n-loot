@@ -77,11 +77,10 @@ local function getItemsByCategory(inventory, category)
     return result
 end
 
--- Transfer items from source container to destination container
-local function transfer(playerIndex, source, destination)
+-- Drop items of selected categories form selected player inventory
+function EDNL_moveItemsByCategories(items, playerIndex, source, destination)
     local player = getSpecificPlayer(playerIndex)
-    local items = destination:getItems() -- items in destination inventory
-    local categories = EDNL_getItemsCategories(items) -- categories of items in destination inventory
+    local categories = EDNL_getItemsCategories(items) -- get same category items from player's inventory
     for _, category in ipairs(categories) do
         local targetItems = getItemsByCategory(source, category) -- get same category items from player's inventory
         for _, inventoryItem in pairs(targetItems) do
@@ -89,10 +88,16 @@ local function transfer(playerIndex, source, destination)
             -- ignore favorite and equipped items
             if (not item:isFavorite() and not player:isEquipped(item)) then
                 -- create "timed action" to transfer items (game api)
-                ISTimedActionQueue.add(ISInventoryTransferAction:new(player, item, source, destination))
+                ISTimedActionQueue.add(ISInventoryTransferAction:new(player, item, item:getContainer(), destination))
             end
         end
     end
+end
+
+-- Transfer items from source container to destination container
+local function transfer(playerIndex, source, destination)
+    local items = destination:getItems() -- items in destination inventory
+    EDNL_moveItemsByCategories(items, playerIndex, source, destination)
 end
 
 --- Get categories display names list of selected items
@@ -118,38 +123,23 @@ function EDNL_isEquipped(playerIndex, items)
     return player:isEquipped(getSingleItem(items))
 end
 
--- Drop items of selected categories form selected player inventory
-function EDNL_moveItemsByCategories(items, playerIndex, source, destination)
-    local player = getSpecificPlayer(playerIndex)
-    local categories = EDNL_getItemsCategories(items)
-    for _, category in ipairs(categories) do
-        local targetItems = getItemsByCategory(source, category)
-        for _, inventoryItem in pairs(targetItems) do
-            local item = getSingleItem(inventoryItem)
-            -- ignore favorite and equipped items
-            if (not item:isFavorite() and not player:isEquipped(item)) then
-                -- create "timed action" to transfer items (game api)
-                ISTimedActionQueue.add(ISInventoryTransferAction:new(player, item, source, destination))
-            end
-        end
-    end
-end
-
 -- Get source and destination inventories depending on current context
 function EDNL_getSourceAndDestinationInventories(selectedItems, playerIndex)
     local playerData = getPlayerData(playerIndex)
     local playerInventory = playerData.playerInventory.inventory -- currently selected player container (e.g., player's duffel bag, plastic bag, key ring, own inventory etc.)
     local lootInventory = playerData.lootInventory.inventory -- currently selected loot container (e.g., shelf, fridge, crate, floor etc.)
-    local firstItem = getSingleItem(selectedItems) -- first selected item
-    local source = firstItem:getContainer() -- source container
+    local firstItem = getSingleItem(selectedItems) -- first selected item    
+    local source -- source container
     local grabbing = false -- grabbing items from loot inventory
     local destination -- destination container
-    -- if source is player then destination is loot and vise-versa
-    if (source == lootInventory) then
-        grabbing = true
-        destination = playerInventory
-    else
+    -- if source is player inventory then destination is loot inventory and vise-versa
+    if (firstItem:getContainer():getCharacter()) then
+        source = playerInventory
         destination = lootInventory
+    else
+        grabbing = true
+        source = lootInventory
+        destination = playerInventory
     end
     return source, destination, grabbing
 end

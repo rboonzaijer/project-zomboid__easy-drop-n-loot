@@ -1,4 +1,4 @@
-UI_EN = {
+UI_CH = {
     UI_grab_category = "撿起全部 (按種類)",
     UI_grab_category_tooltip = "Grab categories:",
     UI_drop_category = "丢棄全部 (按種類)",
