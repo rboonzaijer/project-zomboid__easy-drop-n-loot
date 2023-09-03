@@ -1,0 +1,10 @@
+UI_UA = {
+    UI_grab_category = "Забрати все (категорія)",
+    UI_grab_category_tooltip = "Забрати категорії:",
+    UI_drop_category = "Скинути все (категорія)",
+    UI_drop_category_tooltip = "Скинути категорії:",
+    UI_drop_items_button = "Перемістити категорію",
+    UI_drop_items_button_tooltip = "Скинути всі предмети з тієї ж категорії з вашого інвентаря, як в поточному контейнері зі здобиччю.",
+    UI_loot_items_button = "Здобути категорію",
+    UI_loot_items_button_tooltip = "Здобути всі предмети з тієї ж категорії з поточного контейнера зі здобиччю, як у вашому інвентарі."
+};

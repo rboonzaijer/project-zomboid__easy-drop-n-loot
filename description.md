@@ -73,6 +73,7 @@ A: Yes
 [*] Simplified Chinese (简体中文) (by [url=https://steamcommunity.com/id/minidoracat]Minidoracat[/url])
 [*] Spanish (Español) (by [url=https://steamcommunity.com/id/Dartaroth]Dartaroth[/url])
 [*] Italian (Italiano) (by [url=https://steamcommunity.com/profiles/76561198002245033]Viper79[/url])
+[*] Ukrainian (Українська) (by [url=https://steamcommunity.com/id/Bulvaik]Cosmo[/url])
 [/list]
 
 [h1]For mod developers[/h1]
