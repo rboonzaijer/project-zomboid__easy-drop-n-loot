@@ -74,6 +74,8 @@ A: Yes
 [*] Spanish (Español) (by [url=https://steamcommunity.com/id/Dartaroth]Dartaroth[/url])
 [*] Italian (Italiano) (by [url=https://steamcommunity.com/profiles/76561198002245033]Viper79[/url])
 [*] Ukrainian (Українська) (by [url=https://steamcommunity.com/id/Bulvaik]Cosmo[/url])
+[*] Brazilian Portuguese (Português Brasileiro) (by [url=https://steamcommunity.com/id/n0ciam]Nociam[/url])
+[*] Portuguese (Português)
 [/list]
 
 [h1]For mod developers[/h1]
@@ -91,6 +93,7 @@ Special thanks
 [*] [url=https://steamcommunity.com/id/Js-2nd]Js[/url]
 [*] [url=https://steamcommunity.com/profiles/76561198077191529]Segaside[/url]
 [*] [url=https://steamcommunity.com/profiles/76561197997880978]dhert[/url]
+[*] [url=https://www.youtube.com/watch?v=Ih_2q268ozc]Charles_ya (KR)[/url]
 [/list]
 
 Source: https://github.com/SharePickle/easy-drop-n-loot

@@ -1,0 +1,10 @@
+UI_PTBR = {
+    UI_grab_category = "Pegar tudo (categoria)",
+    UI_grab_category_tooltip = "Pegar categorias:",
+    UI_drop_category = "Transferir tudo (categoria)",
+    UI_drop_category_tooltip = "Transferir categorias:",
+    UI_drop_items_button = "Transferir Categoria",
+    UI_drop_items_button_tooltip = "Transfere todos os itens da mesma categoria do seu inventário no contêiner de saque atual.",
+    UI_loot_items_button = "Pegar Categoria",
+    UI_loot_items_button_tooltip = "Pega todos os itens da mesma categoria do contêiner de saque atual para o seu inventário."
+};
