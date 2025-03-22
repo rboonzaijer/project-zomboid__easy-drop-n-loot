@@ -6,5 +6,5 @@ UI_EN = {
     UI_drop_items_button = "Transfer Category",
     UI_drop_items_button_tooltip = "Drop all items of the same category from your inventory as in the current loot container.",
     UI_loot_items_button = "Loot Category",
-    UI_loot_items_button_tooltip = "Loot all items of the same category from the current loot container as in your inventory."
+    UI_loot_items_button_tooltip = "Loot all items of the same category from the current loot container as in your inventory.",
 };
