@@ -1,3 +1,5 @@
+[h1]BUILD 42 is now supported![/h1]
+
 Drop and Loot items of the same category into or out of your inventory.
 
 Tired of sorting items into different containers? Use this mod to automatically put all items of the same category into open inventory, so you don't have to worry about it!
@@ -7,11 +9,12 @@ Players still need to select which inventory to use (e.g., equipped Duffel Bag) 
 
 [h1]Features[/h1]
 [list]
-[*] Transfer Category - items from player's inventory are transferred into a container only if the container already got items of the same type
+[*] Transfer Category - items from player's inventory are transferred into a container only if the container already has items of the same type
 [*] Loot Category - items from loot inventory are transferred into a player's inventory only if the player's inventory already got items of the same type
 [*] Drop (category) - transfers items of the same category as a selected item (or multiple categories if multiple items selected) between player's inventory and loot inventory
-[*] Grab (category) - transfers items of the same category as a selected item (or multiple categories if multiple items selected) between loot and player's inventory inventory
+[*] Grab (category) - transfers items of the same category as a selected item (or multiple categories if multiple items selected) between loot and player's inventory
 [*] Favorite and Equipped items are ignored
+[*] Now supports keybindings
 [/list]
 
 [h1]How to use[/h1]
@@ -38,12 +41,12 @@ Players still need to select which inventory to use (e.g., equipped Duffel Bag) 
 
 [b]Grab (category)[/b]
 [list]
-[*] If you select "Food" and "Clothing" items from currently selected container - all items of type "Food" and "Clothing" will be tranferred into player's inventory
+[*] If you select "Food" and "Clothing" items from currently selected container - all items of type "Food" and "Clothing" will be transferred into player's inventory
 [/list]
 
 [b]Drop (category)[/b]
 [list]
-[*] If you select "Food" and "Clothing" items from your inventory - all items of type "Food" and "Clothing" will be tranferred into currently selected container
+[*] If you select "Food" and "Clothing" items from your inventory - all items of type "Food" and "Clothing" will be transferred into currently selected container
 [/list]
 
 [h1]Q&A[/h1]
@@ -76,6 +79,7 @@ A: Yes
 [*] Ukrainian (Українська) (by [url=https://steamcommunity.com/id/Bulvaik]Cosmo[/url])
 [*] Brazilian Portuguese (Português Brasileiro) (by [url=https://steamcommunity.com/id/n0ciam]Nociam[/url])
 [*] Portuguese (Português)
+[*] Korean (한국어) (by [url=https://steamcommunity.com/profiles/76561198062695591]Hx[/url])
 [/list]
 
 [h1]For mod developers[/h1]
@@ -94,6 +98,7 @@ Special thanks
 [*] [url=https://steamcommunity.com/profiles/76561198077191529]Segaside[/url]
 [*] [url=https://steamcommunity.com/profiles/76561197997880978]dhert[/url]
 [*] [url=https://www.youtube.com/watch?v=Ih_2q268ozc]Charles_ya (KR)[/url]
+[*] [url=https://steamcommunity.com/id/Dis7887]Диcтoрий[/url]
 [/list]
 
 Source: https://github.com/SharePickle/easy-drop-n-loot
