@@ -2,6 +2,7 @@
 
 require "ISUI/ISButton"
 require "EDNLMain"
+require "EDNLOptions"
 
 local string_UI_drop_items_button = getText("UI_drop_items_button")
 local string_UI_drop_items_button_tooltip = getText("UI_drop_items_button_tooltip")
@@ -31,6 +32,9 @@ end
 
 -- Create "Transfer Category" button on the player inventory UI
 local function createDropItemsButton(self)
+    if EDNL_isDropKeyHidden() then
+        return
+    end
     if (self.EDNLDropItems == nil and self.onCharacter) then
         local titleBarHeight = self:titleBarHeight()
         local lootButtonHeight = titleBarHeight
@@ -51,6 +55,9 @@ end
 
 -- Create "Loot Category" button on the loot inventory UI
 local function createLootItemsButton(self)
+    if EDNL_isLootKeyHidden() then
+        return
+    end    
     if (self.EDNLLootItems == nil and not self.onCharacter) then
         local titleBarHeight = self:titleBarHeight()
         local lootButtonHeight = titleBarHeight

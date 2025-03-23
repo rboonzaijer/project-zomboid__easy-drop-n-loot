@@ -15,6 +15,7 @@ Players still need to select which inventory to use (e.g., equipped Duffel Bag) 
 [*] Grab (category) - transfers items of the same category as a selected item (or multiple categories if multiple items selected) between loot and player's inventory
 [*] Favorite and Equipped items are ignored
 [*] Now supports keybindings
+[*] Transfer Category and Loot Category buttons can be hidden from the UI
 [/list]
 
 [h1]How to use[/h1]
@@ -99,6 +100,7 @@ Special thanks
 [*] [url=https://steamcommunity.com/profiles/76561197997880978]dhert[/url]
 [*] [url=https://www.youtube.com/watch?v=Ih_2q268ozc]Charles_ya (KR)[/url]
 [*] [url=https://steamcommunity.com/id/Dis7887]Диcтoрий[/url]
+[*] [url=https://steamcommunity.com/profiles/76561199133683060]Rusty #DopeRust[/url]
 [/list]
 
 Source: https://github.com/SharePickle/easy-drop-n-loot
