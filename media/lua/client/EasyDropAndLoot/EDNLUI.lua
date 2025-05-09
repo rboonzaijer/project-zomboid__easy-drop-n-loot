@@ -5,19 +5,25 @@ require "EDNLMain"
 
 local string_UI_drop_items_button = getText("UI_drop_items_button")
 local string_UI_drop_items_button_tooltip = getText("UI_drop_items_button_tooltip")
+local string_UI_drop_subitems_button = getText("UI_drop_subitems_button")
+local string_UI_drop_subitems_button_tooltip = getText("UI_drop_subitems_button_tooltip")
 local string_UI_loot_items_button = getText("UI_loot_items_button")
 local string_UI_loot_items_button_tooltip = getText("UI_loot_items_button_tooltip")
+local string_UI_loot_subitems_button = getText("UI_loot_subitems_button")
+local string_UI_loot_subitems_button_tooltip = getText("UI_loot_subitems_button_tooltip")
 local string_UI_grab_category = getText('UI_grab_category')
 local string_UI_drop_category = getText('UI_drop_category')
 local string_UI_grab_category_tooltip = getText('UI_grab_category_tooltip')
 local string_UI_drop_category_tooltip = getText('UI_drop_category_tooltip')
 
+local onlySubCategoryButton = getActivatedMods():contains("BetterSortCC")
+
 --- TOOLTIPS ---
 
 -- Create tooltip text to show which categories will be transferred
-local function createTransferItemsTooltipText(source, destination)
-    local sourceCategories = EDNL_getItemsDisplayCategories(source:getItems())
-    local destinationCategories = EDNL_getItemsDisplayCategories(destination:getItems())
+local function createTransferItemsTooltipText(source, destination, onlySubCategory)
+    local sourceCategories = EDNL_getItemsDisplayCategories(source:getItems(), onlySubCategory)
+    local destinationCategories = EDNL_getItemsDisplayCategories(destination:getItems(), onlySubCategory)
     local displayCategories = ""
     for _, category in ipairs(destinationCategories) do
         if (sourceCategories[category] ~= nil) then -- only show categories that can be transferred (intersection of source and destination)
@@ -47,6 +53,23 @@ local function createDropItemsButton(self)
         self.EDNLDropItems:setVisible(true)
         self.KAtransferAllCompulsively = self.EDNLDropItems -- old button name
     end
+
+    if (onlySubCategoryButton and self.EDNLDropSubItems == nil and self.onCharacter) then
+        local titleBarHeight = self:titleBarHeight()
+        local lootButtonHeight = titleBarHeight
+        local textWid = getTextManager():MeasureStringX(UIFont.Small, string_UI_drop_subitems_button)
+        self.EDNLDropSubItems = ISButton:new(0, 0, textWid, lootButtonHeight, string_UI_drop_subitems_button, self,
+            ISInventoryPage.EDNLDropSubItemsClick)
+        self.EDNLDropSubItemsTooltip = false
+        self.EDNLDropSubItems:initialise()
+        self.EDNLDropSubItems.tooltip = string_UI_drop_subitems_button_tooltip
+        self.EDNLDropSubItems.borderColor.a = 0.0
+        self.EDNLDropSubItems.backgroundColor.a = 0.0
+        self.EDNLDropSubItems.backgroundColorMouseOver.a = 0.7
+        self:addChild(self.EDNLDropSubItems)
+        self.EDNLDropSubItems:setVisible(true)
+        self.KAtransferAllCompulsively = self.EDNLDropSubItems -- old button name
+    end
 end
 
 -- Create "Loot Category" button on the loot inventory UI
@@ -67,6 +90,23 @@ local function createLootItemsButton(self)
         self.EDNLLootItems:setVisible(true)
         self.KAlootAllCompulsively = self.EDNLLootItems -- old button name
     end
+
+    if (onlySubCategoryButton and self.EDNLLootSubItems == nil and not self.onCharacter) then
+        local titleBarHeight = self:titleBarHeight()
+        local lootButtonHeight = titleBarHeight
+        local textWid = getTextManager():MeasureStringX(UIFont.Small, string_UI_loot_subitems_button)
+        self.EDNLLootSubItems = ISButton:new(0, 0, textWid, lootButtonHeight,
+            string_UI_loot_subitems_button, self, ISInventoryPage.EDNLLootSubItemsClick)
+        self.EDNLLootSubItems:initialise()
+        self.EDNLLootSubItemsTooltip = false
+        self.EDNLLootSubItems.tooltip = string_UI_loot_subitems_button_tooltip
+        self.EDNLLootSubItems.borderColor.a = 0.0
+        self.EDNLLootSubItems.backgroundColor.a = 0.0
+        self.EDNLLootSubItems.backgroundColorMouseOver.a = 0.7
+        self:addChild(self.EDNLLootSubItems)
+        self.EDNLLootSubItems:setVisible(true)
+        self.KAlootAllCompulsively = self.EDNLLootSubItems -- old button name
+    end
 end
 
 -- Call "ISInventoryPageCreateChildren" in case it was not called (other mods conflict)
@@ -86,12 +126,22 @@ end
 
 -- "Drop Category" button click handler
 function ISInventoryPage:EDNLDropItemsClick()
-    EDNL_dropItems(self.player)
+    EDNL_dropItems(self.player, false)
+end
+
+-- "Drop Subcategory" button click handler
+function ISInventoryPage:EDNLDropSubItemsClick()
+    EDNL_dropItems(self.player, true)
 end
 
 -- "Loot Category" button click handler
 function ISInventoryPage:EDNLLootItemsClick()
-    EDNL_lootItems(self.player)
+    EDNL_lootItems(self.player, false)
+end
+
+-- "Loot SubCategory" button click handler
+function ISInventoryPage:EDNLLootSubItemsClick()
+    EDNL_lootItems(self.player, true)
 end
 
 -- Get "Transfer Category" button offset to prevent overlapping with other UI elements
@@ -117,13 +167,25 @@ local function updateDropItemsButton(self)
             self.EDNLDropItems:setVisible(true)
             local offset = getDropItemsButtonOffset(self)
             self.EDNLDropItems:setX(offset)
+
+            -- Set position of subitems button
+            if (self.EDNLDropSubItems ~= nil) then
+                self.EDNLDropSubItems:setX(self.EDNLDropItems:getX() - 3 - self.EDNLDropSubItems.width)
+            end
         else
             -- hide "Transfer Category" when "Transfer All" button hides
             self.EDNLDropItems:setVisible(false)
+
+            if (self.EDNLDropSubItems ~= nil) then
+                self.EDNLDropSubItems:setVisible(false)
+            end
         end
 
         if (self.EDNLDropItems.tooltipUI ~= nil) then
             self.EDNLDropItems.tooltipUI:setName(string_UI_drop_items_button_tooltip)
+        end
+        if (self.EDNLDropSubItems.tooltipUI ~= nil) then
+            self.EDNLDropSubItems.tooltipUI:setName(string_UI_drop_subitems_button_tooltip)
         end
 
         local mouseOver = self.EDNLDropItems:isMouseOver()
@@ -132,11 +194,27 @@ local function updateDropItemsButton(self)
             -- add tooltip to show which categories will be transferred
             local playerData = getPlayerData(self.player)
             local text = createTransferItemsTooltipText(playerData.playerInventory.inventory,
-                playerData.lootInventory.inventory)
+                playerData.lootInventory.inventory, false)
             self.EDNLDropItems.tooltip = text
         end
         if (mouseOver == false) then
             self.EDNLDropItemsTooltip = false
+        end
+
+        -- Tooltip subcategory
+        if (self.EDNLDropSubItems ~= nil) then
+            local mouseOverSub = self.EDNLDropSubItems:isMouseOver()
+            if (mouseOverSub and self.EDNLDropSubItemsTooltip == false) then
+                self.EDNLDropSubItemsTooltip = true -- running stuff below every frame is expensive!
+                -- add tooltip to show which categories will be transferred
+                local playerData = getPlayerData(self.player)
+                local text = createTransferItemsTooltipText(playerData.playerInventory.inventory,
+                    playerData.lootInventory.inventory, true)
+                self.EDNLDropSubItems.tooltip = text
+            end
+            if (mouseOverSub == false) then
+                self.EDNLDropSubItemsTooltip = false
+            end
         end
 
     end
@@ -185,6 +263,12 @@ local function updateLootItemsButton(self)
             self.EDNLLootItems.tooltipUI:setName(string_UI_loot_items_button_tooltip)
         end
 
+        -- Position subcategory button
+        self.EDNLLootSubItems:setX(self.EDNLLootItems:getX() + self.EDNLLootItems.width + 3)
+        if (self.EDNLLootSubItems.tooltipUI ~= nil) then
+            self.EDNLLootSubItems.tooltipUI:setName(string_UI_loot_subitems_button_tooltip)
+        end
+
         -- add tooltip to show which categories will be transferred
         local mouseOver = self.EDNLLootItems:isMouseOver()
         if (mouseOver and self.EDNLLootItemsTooltip == false) then
@@ -192,11 +276,28 @@ local function updateLootItemsButton(self)
             -- add tooltip to show which categories will be transferred
             local playerData = getPlayerData(self.player)
             local text = createTransferItemsTooltipText(playerData.lootInventory.inventory,
-                playerData.playerInventory.inventory)
+                playerData.playerInventory.inventory, false)
             self.EDNLLootItems.tooltip = text
         end
         if (mouseOver == false) then
             self.EDNLLootItemsTooltip = false
+        end
+
+        -- Tooltip subcategory
+        if (self.EDNLLootSubItems ~= nil) then
+           -- add tooltip to show which categories will be transferred
+            local mouseOverSub = self.EDNLLootSubItems:isMouseOver()
+            if (mouseOverSub and self.EDNLLootSubItemsTooltip == false) then
+                self.EDNLLootItemsTooltip = true -- running stuff below every frame is expensive!
+                -- add tooltip to show which categories will be transferred
+                local playerData = getPlayerData(self.player)
+                local text = createTransferItemsTooltipText(playerData.lootInventory.inventory,
+                    playerData.playerInventory.inventory, true)
+                self.EDNLLootSubItems.tooltip = text
+            end
+            if (mouseOverSub == false) then
+                self.EDNLLootSubItemsTooltip = false
+            end
         end
     end
 end
@@ -236,7 +337,7 @@ end
 
 -- Add tooltip to show which categories will be transferred
 local function createItemsTooltip(option, items, grabbing)
-    local categories = EDNL_getItemsDisplayCategories(items)
+    local categories = EDNL_getItemsDisplayCategories(items, true)
     local displayCategories = ""
     for _, category in ipairs(categories) do
         displayCategories = displayCategories .. category .. " <LINE> "
