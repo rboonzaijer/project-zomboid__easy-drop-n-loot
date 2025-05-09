@@ -5,6 +5,10 @@ UI_EN = {
     UI_drop_category_tooltip = "Drop categories:",
     UI_drop_items_button = "Transfer Category",
     UI_drop_items_button_tooltip = "Drop all items of the same category from your inventory as in the current loot container.",
+    UI_drop_subitems_button = "Transfer Subcategory",
+    UI_drop_subitems_button_tooltip = "Drop all items of the same subcategory from your inventory as in the current loot container.",
     UI_loot_items_button = "Loot Category",
-    UI_loot_items_button_tooltip = "Loot all items of the same category from the current loot container as in your inventory."
+    UI_loot_items_button_tooltip = "Loot all items of the same category from the current loot container as in your inventory.",
+    UI_loot_subitems_button = "Loot Subcategory",
+    UI_loot_subitems_button_tooltip = "Loot all items of the same subcategory from the current loot container as in your inventory."
 };
